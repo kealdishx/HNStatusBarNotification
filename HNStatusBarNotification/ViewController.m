@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "HNStatusBarNotiManager.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (IBAction)pushNotification {
+    [HNStatusBarNotiManager showStatusWithText:@"你好分骄傲是ghkjhlhklhk快乐飞回家而乌克"];
+    [HNStatusBarNotiManager showIndicatorViewWithStyle:UIActivityIndicatorViewStyleWhite];
+    [HNStatusBarNotiManager dismissAfterInterval:3.0f completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

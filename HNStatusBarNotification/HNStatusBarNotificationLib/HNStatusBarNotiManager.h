@@ -7,7 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+typedef void (^completionBlock)();
 
 @interface HNStatusBarNotiManager : NSObject
+
+#pragma mark - presentation
++ (void)showStatusWithText:(NSString *)title;
+
++ (void)showStatusWithText:(NSString *)title duration:(NSTimeInterval)duration completion:(completionBlock)completion;
+
++ (void)showIndicatorViewWithStyle:(UIActivityIndicatorViewStyle)style;
+
++ (void)showProgress:(CGFloat)progress;
+
+#pragma mark - dismiss
++ (void)dismissWithCompletion:(completionBlock)completion;
+
++ (void)dismissAfterInterval:(NSTimeInterval)interval completion:(completionBlock)completion;
 
 @end

@@ -7,15 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B2F64A81CB3812400679CBD /* HNStatusNotiConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F64A71CB3812400679CBD /* HNStatusNotiConfig.m */; };
+		1B2F64AB1CB40C0A00679CBD /* HNTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F64AA1CB40C0A00679CBD /* HNTimerManager.m */; };
 		1B3D61821CB20E4000A818E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D61811CB20E4000A818E6 /* main.m */; };
 		1B3D61851CB20E4000A818E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D61841CB20E4000A818E6 /* AppDelegate.m */; };
 		1B3D61881CB20E4000A818E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D61871CB20E4000A818E6 /* ViewController.m */; };
 		1B3D618B1CB20E4000A818E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B3D61891CB20E4000A818E6 /* Main.storyboard */; };
 		1B3D618D1CB20E4000A818E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B3D618C1CB20E4000A818E6 /* Assets.xcassets */; };
 		1B3D61901CB20E4000A818E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B3D618E1CB20E4000A818E6 /* LaunchScreen.storyboard */; };
+		1B3D619A1CB20EC300A818E6 /* HNStatusBarNotiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D61991CB20EC300A818E6 /* HNStatusBarNotiManager.m */; };
+		1B3D619D1CB20EEF00A818E6 /* HNStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D619C1CB20EEF00A818E6 /* HNStatusBarView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B2F64A61CB3812400679CBD /* HNStatusNotiConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStatusNotiConfig.h; sourceTree = "<group>"; };
+		1B2F64A71CB3812400679CBD /* HNStatusNotiConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStatusNotiConfig.m; sourceTree = "<group>"; };
+		1B2F64A91CB40C0A00679CBD /* HNTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNTimerManager.h; sourceTree = "<group>"; };
+		1B2F64AA1CB40C0A00679CBD /* HNTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNTimerManager.m; sourceTree = "<group>"; };
 		1B3D617D1CB20E3F00A818E6 /* HNStatusBarNotification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HNStatusBarNotification.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3D61811CB20E4000A818E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1B3D61831CB20E4000A818E6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +34,10 @@
 		1B3D618C1CB20E4000A818E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B3D618F1CB20E4000A818E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B3D61911CB20E4000A818E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B3D61981CB20EC300A818E6 /* HNStatusBarNotiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStatusBarNotiManager.h; sourceTree = "<group>"; };
+		1B3D61991CB20EC300A818E6 /* HNStatusBarNotiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStatusBarNotiManager.m; sourceTree = "<group>"; };
+		1B3D619B1CB20EEF00A818E6 /* HNStatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStatusBarView.h; sourceTree = "<group>"; };
+		1B3D619C1CB20EEF00A818E6 /* HNStatusBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStatusBarView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 		1B3D617F1CB20E4000A818E6 /* HNStatusBarNotification */ = {
 			isa = PBXGroup;
 			children = (
+				1B3D61971CB20E8600A818E6 /* HNStatusBarNotificationLib */,
 				1B3D61831CB20E4000A818E6 /* AppDelegate.h */,
 				1B3D61841CB20E4000A818E6 /* AppDelegate.m */,
 				1B3D61861CB20E4000A818E6 /* ViewController.h */,
@@ -77,6 +90,21 @@
 				1B3D61811CB20E4000A818E6 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1B3D61971CB20E8600A818E6 /* HNStatusBarNotificationLib */ = {
+			isa = PBXGroup;
+			children = (
+				1B3D61981CB20EC300A818E6 /* HNStatusBarNotiManager.h */,
+				1B3D61991CB20EC300A818E6 /* HNStatusBarNotiManager.m */,
+				1B3D619B1CB20EEF00A818E6 /* HNStatusBarView.h */,
+				1B3D619C1CB20EEF00A818E6 /* HNStatusBarView.m */,
+				1B2F64A61CB3812400679CBD /* HNStatusNotiConfig.h */,
+				1B2F64A71CB3812400679CBD /* HNStatusNotiConfig.m */,
+				1B2F64A91CB40C0A00679CBD /* HNTimerManager.h */,
+				1B2F64AA1CB40C0A00679CBD /* HNTimerManager.m */,
+			);
+			path = HNStatusBarNotificationLib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,6 +133,7 @@
 		1B3D61751CB20E3F00A818E6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = HN;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Zakariyya;
 				TargetAttributes = {
@@ -151,7 +180,11 @@
 			files = (
 				1B3D61881CB20E4000A818E6 /* ViewController.m in Sources */,
 				1B3D61851CB20E4000A818E6 /* AppDelegate.m in Sources */,
+				1B3D619D1CB20EEF00A818E6 /* HNStatusBarView.m in Sources */,
 				1B3D61821CB20E4000A818E6 /* main.m in Sources */,
+				1B3D619A1CB20EC300A818E6 /* HNStatusBarNotiManager.m in Sources */,
+				1B2F64AB1CB40C0A00679CBD /* HNTimerManager.m in Sources */,
+				1B2F64A81CB3812400679CBD /* HNStatusNotiConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +335,7 @@
 				1B3D61961CB20E4000A818E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

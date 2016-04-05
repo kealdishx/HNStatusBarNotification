@@ -10,4 +10,6 @@
 
 @interface HNStatusNotiConfig : NSObject
 
+
+
 @end
