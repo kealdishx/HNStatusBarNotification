@@ -23,6 +23,7 @@
 - (IBAction)pushNotification {
     [HNStatusBarNotiManager showStatusWithText:@"你好分骄傲是ghkjhlhklhk快乐飞回家而乌克"];
     [HNStatusBarNotiManager showIndicatorViewWithStyle:UIActivityIndicatorViewStyleWhite];
+    [HNStatusBarNotiManager showProgress:0.5f];
     [HNStatusBarNotiManager dismissAfterInterval:3.0f completion:nil];
 }
 

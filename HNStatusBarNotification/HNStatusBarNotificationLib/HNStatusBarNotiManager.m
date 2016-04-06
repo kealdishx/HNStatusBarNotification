@@ -9,15 +9,17 @@
 #import "HNStatusBarNotiManager.h"
 #import "HNStatusBarView.h"
 #import <CoreText/CoreText.h>
-#import "HNTimerManager.h"
 
-static NSString *timer = @"timer";
 
 @interface HNStatusBarNotiManager()
 
 @property (nonatomic,strong) HNStatusBarView *statusView;
 
 @property (nonatomic,assign) CGSize textSize;
+
+@property (nonatomic,strong) NSTimer *dismissTimer;
+
+@property (nonatomic,strong) completionBlock completion;
 
 @end
 
@@ -47,7 +49,7 @@ static NSString *timer = @"timer";
 }
 
 + (void)showProgress:(CGFloat)progress{
-    
+    [[self sharedManager] showProgress:progress];
 }
 
 + (void)dismissWithCompletion:(completionBlock)completion{
@@ -68,9 +70,6 @@ static NSString *timer = @"timer";
 
 - (void)showStatusWithText:(NSString *)title duration:(NSTimeInterval)duration completion:(completionBlock)completion{
     NSLog(@"show!");
-//    [[NSRunLoop currentRunLoop] cancelPerformSelector:@selector(dismissAfterInterval:completion:) target:self argument:nil];
-//    [self makeTranslationWithStatusBar:0 completion:nil];
-//    [self.statusView.layer removeAllAnimations];
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:title];
     self.statusView.titleLayer.fontSize = [self calculateFontSizeWithText:attributedText];
     self.statusView.titleLayer.string = attributedText;
@@ -141,36 +140,50 @@ static NSString *timer = @"timer";
 }
 
 - (void)showProgress:(CGFloat)progress{
-    
+    if (progress < 0 || progress > 1.0f || !self.statusView.progressView) {
+        return;
+    }
+    [self.statusView.progressView setProgress:progress];
+}
+
+- (void)setDismissTimerWithInterval:(NSTimeInterval)interval{
+    [self.dismissTimer invalidate];
+    self.dismissTimer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(dismiss) userInfo:nil repeats:NO];
+    [[NSRunLoop currentRunLoop] addTimer:self.dismissTimer forMode:NSRunLoopCommonModes];
 }
 
 - (void)dismissAfterInterval:(NSTimeInterval)interval completion:(completionBlock)completion{
+    [self setDismissTimerWithInterval:interval];
+    self.completion = completion;
+}
+
+- (void)dismiss{
     NSLog(@"dismiss");
-    [HNTimerManager scheduledTimerWithName:timer interval:interval queue:dispatch_get_main_queue() repeat:NO action:^{
-        [UIView animateWithDuration:0.3f animations:^{
-            self.statusView.transform = CGAffineTransformMakeTranslation(0, -statusHeight);
-        } completion:^(BOOL finished) {
-            if (![UIApplication sharedApplication].statusBarHidden) {
-                [self makeTranslationWithStatusBar:0 completion:^{
-                    [self.statusView.indicatorView stopAnimating];
-                    [self.statusView removeFromSuperview];
-                    self.statusView = nil;
-                    if (completion) {
-                        completion();
-                    }
-                }];
-            }
-            else{
-                [self.statusView.indicatorView stopAnimating];
+    [self.dismissTimer invalidate];
+    self.dismissTimer = nil;
+    [UIView animateWithDuration:0.3f animations:^{
+        self.statusView.transform = CGAffineTransformMakeTranslation(0, -statusHeight);
+    } completion:^(BOOL finished) {
+        if (![UIApplication sharedApplication].statusBarHidden) {
+            [self makeTranslationWithStatusBar:0 completion:^{
+                [self.statusView.layer removeAllAnimations];
                 [self.statusView removeFromSuperview];
                 self.statusView = nil;
-                if (completion) {
-                    completion();
+                if (self.completion) {
+                    self.completion();
                 }
+            }];
+        }
+        else{
+            [self.statusView.layer removeAllAnimations];
+            [self.statusView removeFromSuperview];
+            self.statusView = nil;
+            if (self.completion) {
+                self.completion();
             }
-        }];
-
+        }
     }];
+
 }
 
 

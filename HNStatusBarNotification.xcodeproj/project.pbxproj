@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1B2F64A81CB3812400679CBD /* HNStatusNotiConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F64A71CB3812400679CBD /* HNStatusNotiConfig.m */; };
-		1B2F64AB1CB40C0A00679CBD /* HNTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F64AA1CB40C0A00679CBD /* HNTimerManager.m */; };
 		1B3D61821CB20E4000A818E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D61811CB20E4000A818E6 /* main.m */; };
 		1B3D61851CB20E4000A818E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D61841CB20E4000A818E6 /* AppDelegate.m */; };
 		1B3D61881CB20E4000A818E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D61871CB20E4000A818E6 /* ViewController.m */; };
@@ -22,8 +21,6 @@
 /* Begin PBXFileReference section */
 		1B2F64A61CB3812400679CBD /* HNStatusNotiConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStatusNotiConfig.h; sourceTree = "<group>"; };
 		1B2F64A71CB3812400679CBD /* HNStatusNotiConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStatusNotiConfig.m; sourceTree = "<group>"; };
-		1B2F64A91CB40C0A00679CBD /* HNTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNTimerManager.h; sourceTree = "<group>"; };
-		1B2F64AA1CB40C0A00679CBD /* HNTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNTimerManager.m; sourceTree = "<group>"; };
 		1B3D617D1CB20E3F00A818E6 /* HNStatusBarNotification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HNStatusBarNotification.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3D61811CB20E4000A818E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1B3D61831CB20E4000A818E6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -101,8 +98,6 @@
 				1B3D619C1CB20EEF00A818E6 /* HNStatusBarView.m */,
 				1B2F64A61CB3812400679CBD /* HNStatusNotiConfig.h */,
 				1B2F64A71CB3812400679CBD /* HNStatusNotiConfig.m */,
-				1B2F64A91CB40C0A00679CBD /* HNTimerManager.h */,
-				1B2F64AA1CB40C0A00679CBD /* HNTimerManager.m */,
 			);
 			path = HNStatusBarNotificationLib;
 			sourceTree = "<group>";
@@ -183,7 +178,6 @@
 				1B3D619D1CB20EEF00A818E6 /* HNStatusBarView.m in Sources */,
 				1B3D61821CB20E4000A818E6 /* main.m in Sources */,
 				1B3D619A1CB20EC300A818E6 /* HNStatusBarNotiManager.m in Sources */,
-				1B2F64AB1CB40C0A00679CBD /* HNTimerManager.m in Sources */,
 				1B2F64A81CB3812400679CBD /* HNStatusNotiConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

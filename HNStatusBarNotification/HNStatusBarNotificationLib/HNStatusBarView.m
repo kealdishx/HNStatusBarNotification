@@ -52,6 +52,9 @@
 - (UIProgressView *)progressView{
     if (!_progressView) {
         _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+        _progressView.frame = self.bounds;
+        _progressView.tintColor = [UIColor blueColor];
+        [_progressView setProgress:0.0f];
         [self addSubview:_progressView];
     }
     return _progressView;
@@ -72,13 +75,6 @@
     return _titleLayer;
 }
 
-- (void)layoutSublayersOfLayer:(CALayer *)layer{
-
-}
-
-- (void)layoutSubviews{
-    
-}
 
 
 
