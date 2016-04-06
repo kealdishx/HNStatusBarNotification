@@ -18,4 +18,4 @@
 ```
 ####支持自定义StautusView样式:HNStatusNotiConfig
 
-![](https://github.com/ZakariyyaSv/HNstatusBarNotification/raw/master/NotificationDemo.gif)
+![](https://github.com/ZakariyyaSv/HNstatusBarNotification/raw/master/NotficationDemo.gif)
