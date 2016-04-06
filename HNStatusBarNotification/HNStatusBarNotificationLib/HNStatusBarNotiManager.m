@@ -37,11 +37,15 @@
 
 #pragma mark - class method
 + (void)showStatusWithText:(NSString *)title{
-    [[self sharedManager] showStatusWithText:title duration:0 completion:nil];
+    [[self sharedManager] showStatusWithText:title duration:0 completion:nil config:nil];
 }
 
-+ (void)showStatusWithText:(NSString *)title duration:(NSTimeInterval)duration completion:(completionBlock)completion{
-    [[self sharedManager] showStatusWithText:title duration:duration completion:completion];
++ (void)showStatusWithText:(NSString *)title config:(HNStatusNotiConfig *)config{
+    [[self sharedManager] showStatusWithText:title duration:0 completion:nil config:config];
+}
+
++ (void)showStatusWithText:(NSString *)title duration:(NSTimeInterval)duration completion:(completionBlock)completion config:(HNStatusNotiConfig *)config{
+    [[self sharedManager] showStatusWithText:title duration:duration completion:completion config:config];
 }
 
 + (void)showIndicatorViewWithStyle:(UIActivityIndicatorViewStyle)style{
@@ -68,12 +72,18 @@
     return _statusView;
 }
 
-- (void)showStatusWithText:(NSString *)title duration:(NSTimeInterval)duration completion:(completionBlock)completion{
-    NSLog(@"show!");
+- (void)showStatusWithText:(NSString *)title duration:(NSTimeInterval)duration completion:(completionBlock)completion config:(HNStatusNotiConfig *)config{
+    HNStatusNotiConfig *statusConfig = config;
+    if (!config) {
+        statusConfig = [[HNStatusNotiConfig alloc] init];
+    }
+    self.statusView.backgroundColor = statusConfig.backColor;
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:title];
-    self.statusView.titleLayer.fontSize = [self calculateFontSizeWithText:attributedText];
+    [attributedText addAttributes:@{NSFontAttributeName : [UIFont fontWithName:statusConfig.textFontName size:[self calculateFontSizeWithText:attributedText fontName:config.textFontName]],NSForegroundColorAttributeName : statusConfig.textColor} range:NSMakeRange(0, title.length - 1)];
     self.statusView.titleLayer.string = attributedText;
-    _textSize = [title sizeWithAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:self.statusView.titleLayer.fontSize]}];
+    self.statusView.progressView.tintColor = statusConfig.progressViewTintColor;
+    self.statusView.progressView.trackTintColor = statusConfig.progressViewTrackTintColor;
+    _textSize = [title sizeWithAttributes:@{NSFontAttributeName : [UIFont fontWithName:statusConfig.textFontName size:[self calculateFontSizeWithText:attributedText fontName:config.textFontName]]}];
     if (![UIApplication sharedApplication].statusBarHidden) {
         [[UIApplication sharedApplication].keyWindow addSubview:self.statusView];
         [self makeTranslationWithStatusBar:-statusHeight completion:^{
@@ -87,12 +97,11 @@
             self.statusView.transform = CGAffineTransformMakeTranslation(0, statusHeight);
         }];
     }
-    
     duration == 0 ? : [self dismissAfterInterval:duration completion:completion];
     
 }
 
-- (CGFloat)calculateFontSizeWithText:(NSMutableAttributedString *)text{
+- (CGFloat)calculateFontSizeWithText:(NSMutableAttributedString *)text fontName:(NSString *)name{
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)text);
     CGRect columnRect = CGRectMake(0, 0 , ScreenWidth, statusHeight);
     CGMutablePathRef path = CGPathCreateMutable();
@@ -102,7 +111,7 @@
     CGFloat fontSize = 14.0f;
     while(text.string.length > frameRange.length){
         fontSize -= 0.5;
-        CFStringRef fontName = (__bridge CFStringRef)[[NSUserDefaults standardUserDefaults] objectForKey:@"font"];
+        CFStringRef fontName = (__bridge CFStringRef)name;
         CTFontRef font = CTFontCreateWithName(fontName, fontSize, NULL);
         [text addAttribute:(NSString *)kCTFontAttributeName
                           value:(__bridge id)font
@@ -131,10 +140,10 @@
 }
 
 - (void)showIndicatorViewWithStyle:(UIActivityIndicatorViewStyle)style{
-    if (_textSize.width > (ScreenWidth - 10 * 2)) {
+    if (_textSize.width > (ScreenWidth - 20 * 2)) {
         return;
     }
-    self.statusView.indicatorView.frame = CGRectMake((ScreenWidth - _textSize.width) * 0.5, 5, 10, 10);
+    self.statusView.indicatorView.frame = CGRectMake((ScreenWidth - _textSize.width) * 0.5 - 20, 5, 10, 10);
     self.statusView.indicatorView.activityIndicatorViewStyle = style;
     [self.statusView.indicatorView startAnimating];
 }
@@ -143,6 +152,7 @@
     if (progress < 0 || progress > 1.0f || !self.statusView.progressView) {
         return;
     }
+    self.statusView.progressView.hidden = NO;
     [self.statusView.progressView setProgress:progress];
 }
 
@@ -158,7 +168,6 @@
 }
 
 - (void)dismiss{
-    NSLog(@"dismiss");
     [self.dismissTimer invalidate];
     self.dismissTimer = nil;
     [UIView animateWithDuration:0.3f animations:^{
@@ -181,6 +190,7 @@
             if (self.completion) {
                 self.completion();
             }
+            
         }
     }];
 

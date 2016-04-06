@@ -7,16 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import "HNStatusNotiConfig.h"
 
 typedef void (^completionBlock)();
 
 @interface HNStatusBarNotiManager : NSObject
 
 #pragma mark - presentation
+
 + (void)showStatusWithText:(NSString *)title;
 
-+ (void)showStatusWithText:(NSString *)title duration:(NSTimeInterval)duration completion:(completionBlock)completion;
++ (void)showStatusWithText:(NSString *)title config:(HNStatusNotiConfig *)config;
+
++ (void)showStatusWithText:(NSString *)title duration:(NSTimeInterval)duration completion:(completionBlock)completion config:(HNStatusNotiConfig *)config;
 
 + (void)showIndicatorViewWithStyle:(UIActivityIndicatorViewStyle)style;
 

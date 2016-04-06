@@ -53,7 +53,7 @@
     if (!_progressView) {
         _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
         _progressView.frame = self.bounds;
-        _progressView.tintColor = [UIColor blueColor];
+        _progressView.hidden = YES;
         [_progressView setProgress:0.0f];
         [self addSubview:_progressView];
     }

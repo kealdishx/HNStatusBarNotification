@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gk2-5N-BLg">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="SoQ-oS-LEp">
+            <objects>
+                <navigationController id="Gk2-5N-BLg" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P50-3W-Yw4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="xYL-zd-zOq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UYk-yU-VsR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-986" y="329"/>
+        </scene>
+        <!--HNStatusBarNotification-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
@@ -17,19 +33,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkE-DX-C01">
-                                <rect key="frame" x="253" y="224" width="46" height="30"/>
-                                <state key="normal" title="Noti"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkE-DX-C01">
+                                <rect key="frame" x="0.0" y="134" width="600" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="clW-G4-7Og"/>
+                                </constraints>
+                                <state key="normal" title="Normal"/>
                                 <connections>
                                     <action selector="pushNotification" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vk8-sO-meg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHf-qo-qs3">
+                                <rect key="frame" x="0.0" y="234" width="600" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7VC-zo-7jV"/>
+                                </constraints>
+                                <state key="normal" title="progressView"/>
+                                <connections>
+                                    <action selector="uploadOnClick" destination="BYZ-38-t0r" eventType="touchUpInside" id="9sE-Dz-DWb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duJ-4w-xbD">
+                                <rect key="frame" x="0.0" y="184" width="600" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="tXz-GX-Zcm"/>
+                                </constraints>
+                                <state key="normal" title="indicatorView"/>
+                                <connections>
+                                    <action selector="loadOnClick" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mne-td-hFC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="duJ-4w-xbD" secondAttribute="trailing" id="4A1-3h-IfL"/>
+                            <constraint firstItem="WkE-DX-C01" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BOo-Xa-lcW"/>
+                            <constraint firstItem="duJ-4w-xbD" firstAttribute="top" secondItem="WkE-DX-C01" secondAttribute="bottom" constant="20" id="K7h-V8-mYb"/>
+                            <constraint firstItem="CHf-qo-qs3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="L6R-Uh-Cj0"/>
+                            <constraint firstItem="CHf-qo-qs3" firstAttribute="top" secondItem="duJ-4w-xbD" secondAttribute="bottom" constant="20" id="TR2-Wu-mPs"/>
+                            <constraint firstAttribute="trailing" secondItem="WkE-DX-C01" secondAttribute="trailing" id="asO-UD-OQm"/>
+                            <constraint firstItem="duJ-4w-xbD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mp8-cP-nyW"/>
+                            <constraint firstItem="WkE-DX-C01" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="70" id="udk-jm-9GQ"/>
+                            <constraint firstAttribute="trailing" secondItem="CHf-qo-qs3" secondAttribute="trailing" id="vDW-eb-oIJ"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="HNStatusBarNotification" id="LwM-Th-BI6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-302" y="329"/>
         </scene>
     </scenes>
 </document>
