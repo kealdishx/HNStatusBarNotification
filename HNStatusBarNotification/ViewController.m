@@ -26,7 +26,6 @@
 
 - (IBAction)pushNotification {
     [HNStatusBarNotiManager showStatusWithText:@"这是一条消息!"];
-    [HNStatusBarNotiManager showIndicatorViewWithStyle:UIActivityIndicatorViewStyleWhite];
     [HNStatusBarNotiManager dismissAfterInterval:3.0f completion:nil];
 
 }
